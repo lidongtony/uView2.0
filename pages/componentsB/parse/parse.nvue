@@ -5,24 +5,24 @@
 </template>
 
 <script>
-	const content = require('./content')
+	import content from "./content";
 	export default {
 		data() {
 			return {
-				content: '',
+				content: "",
 				tagStyle: {
-					table: 'box-sizing: border-box; border-top: 1px solid #dfe2e5; border-left: 1px solid #dfe2e5;',
-					th: 'border-right: 1px solid #dfe2e5; border-bottom: 1px solid #dfe2e5;',
-					td: 'border-right: 1px solid #dfe2e5; border-bottom: 1px solid #dfe2e5;',
-					li: 'margin: 5px 0;'
+					table: "box-sizing: border-box; border-top: 1px solid #dfe2e5; border-left: 1px solid #dfe2e5;",
+					th: "border-right: 1px solid #dfe2e5; border-bottom: 1px solid #dfe2e5;",
+					td: "border-right: 1px solid #dfe2e5; border-bottom: 1px solid #dfe2e5;",
+					li: "margin: 5px 0;"
 				}
-			}
+			};
 		},
 		onLoad() {
 			// 模拟网络请求
 			setTimeout(() => {
-				this.content = content
-			}, 200)
+				this.content = content;
+			}, 200);
 		},
 		methods: {
 			load() {
@@ -38,7 +38,7 @@
 				// 链接被点击时触发
 			}
 		}
-	}
+	};
 </script>
 
 <style lang="scss">

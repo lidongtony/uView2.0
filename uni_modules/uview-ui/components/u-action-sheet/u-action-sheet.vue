@@ -35,10 +35,9 @@
 			<slot>
 				<u-line v-if="description"></u-line>
 				<view class="u-action-sheet__item-wrap">
-					<template v-for="(item, index) in actions">
+					<template v-for="(item, index) in actions" :key="index">
 						<!-- #ifdef MP -->
 						<button
-						    :key="index"
 						    class="u-reset-button"
 						    :openType="item.openType"
 						    @getuserinfo="onGetUserInfo"
@@ -107,9 +106,9 @@
 </template>
 
 <script>
-	import openType from '../../libs/mixin/openType'
-	import button from '../../libs/mixin/button'
-	import props from './props.js';
+	import openType from "../../libs/mixin/openType";
+	import button from "../../libs/mixin/button";
+	import props from "./props.js";
 	/**
 	 * ActionSheet 操作菜单
 	 * @description 本组件用于从底部弹出一个操作菜单，供用户选择并返回结果。本组件功能类似于uni的uni.showActionSheetAPI，配置更加灵活，所有平台都表现一致。
@@ -150,43 +149,43 @@
 		data() {
 			return {
 
-			}
+			};
 		},
 		computed: {
 			// 操作项目的样式
 			itemStyle() {
 				return (index) => {
 					let style = {};
-					if (this.actions[index].color) style.color = this.actions[index].color
-					if (this.actions[index].fontSize) style.fontSize = uni.$u.addUnit(this.actions[index].fontSize)
+					if (this.actions[index].color) style.color = this.actions[index].color;
+					if (this.actions[index].fontSize) style.fontSize = uni.$u.addUnit(this.actions[index].fontSize);
 					// 选项被禁用的样式
-					if (this.actions[index].disabled) style.color = '#c0c4cc'
+					if (this.actions[index].disabled) style.color = "#c0c4cc";
 					return style;
-				}
+				};
 			},
 		},
 		methods: {
 			closeHandler() {
 				// 允许点击遮罩关闭时，才发出close事件
 				if(this.closeOnClickOverlay) {
-					this.$emit('close')
+					this.$emit("close");
 				}
 			},
 			// 点击取消按钮
 			cancel() {
-				this.$emit('close')
+				this.$emit("close");
 			},
 			selectHandler(index) {
-				const item = this.actions[index]
+				const item = this.actions[index];
 				if (item && !item.disabled && !item.loading) {
-					this.$emit('select', item)
+					this.$emit("select", item);
 					if (this.closeOnClickAction) {
-						this.$emit('close')
+						this.$emit("close");
 					}
 				}
 			},
 		}
-	}
+	};
 </script>
 
 <style lang="scss" scoped>

@@ -64,7 +64,7 @@
 </template>
 
 <script>
-	import props from './props.js';
+	import props from "./props.js";
 	/**
 	 * Image 图片
 	 * @description 此组件为uni-app的image组件的加强版，在继承了原有功能外，还支持淡入动画、加载中、加载失败提示、圆角值和形状等。
@@ -92,7 +92,7 @@
 	 * @example <u-image width="100%" height="300px" :src="src"></u-image>
 	 */
 	export default {
-		name: 'u-image',
+		name: "u-image",
 		mixins: [uni.$u.mpMixin, uni.$u.mixin, props],
 		data() {
 			return {
@@ -116,7 +116,7 @@
 				handler(n) {
 					if (!n) {
 						// 如果传入null或者''，或者false，或者undefined，标记为错误状态
-						this.isError = true
+						this.isError = true;
 						
 					} else {
 						this.isError = false;
@@ -132,9 +132,9 @@
 				style.width = this.$u.addUnit(this.width);
 				style.height = this.$u.addUnit(this.height);
 				// 如果是显示圆形，设置一个很多的半径值即可
-				style.borderRadius = this.shape == 'circle' ? '10000px' : uni.$u.addUnit(this.radius)
+				style.borderRadius = this.shape == "circle" ? "10000px" : uni.$u.addUnit(this.radius);
 				// 如果设置圆角，必须要有hidden，否则可能圆角无效
-				style.overflow = this.borderRadius > 0 ? 'hidden' : 'visible'
+				style.overflow = style.borderRadius > 0 ? "hidden" : "visible";
 				// if (this.fade) {
 				// 	style.opacity = this.opacity
 				// 	// nvue下，这几个属性必须要分开写
@@ -147,25 +147,25 @@
 			}
 		},
 		mounted() {
-			this.show = true
+			this.show = true;
 		},
 		methods: {
 			// 点击图片
 			onClick() {
-				this.$emit('click')
+				this.$emit("click");
 			},
 			// 图片加载失败
 			onErrorHandler(err) {
-				this.loading = false
-				this.isError = true
-				this.$emit('error', err)
+				this.loading = false;
+				this.isError = true;
+				this.$emit("error", err);
 			},
 			// 图片加载完成，标记loading结束
 			onLoadHandler() {
-				this.loading = false
-				this.isError = false
-				this.$emit('load')
-				this.removeBgColor()
+				this.loading = false;
+				this.isError = false;
+				this.$emit("load");
+				this.removeBgColor();
 				// 如果不需要动画效果，就不执行下方代码，同时移除加载时的背景颜色
 				// 否则无需fade效果时，png图片依然能看到下方的背景色
 				// if (!this.fade) return this.removeBgColor();
@@ -187,7 +187,7 @@
 			removeBgColor() {
 				// 淡入动画过渡完成后，将背景设置为透明色，否则png图片会看到灰色的背景
 				this.backgroundStyle = {
-					backgroundColor: 'transparent'
+					backgroundColor: "transparent"
 				};
 			}
 		}

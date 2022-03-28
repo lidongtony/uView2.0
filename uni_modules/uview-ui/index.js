@@ -74,6 +74,6 @@ const install = (Vue) => {
     // #endif
 }
 
-export default {
+export {
     install
 }
