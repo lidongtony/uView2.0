@@ -40,7 +40,7 @@
 			// 所以需要手动通知子组件，这里返回一个parentData变量，供watch监听，在其中去通知每一个子组件重新从父组件(u-checkbox-group)
 			// 拉取父组件新的变化后的参数
 			parentData() {
-				return [this.value, this.disabled, this.inactiveColor, this.activeColor, this.size, this.labelDisabled, this.shape,
+				return [this.modelValue, this.disabled, this.inactiveColor, this.activeColor, this.size, this.labelDisabled, this.shape,
 					this.iconSize, this.borderBottom, this.placement
 				]
 			},
@@ -81,7 +81,7 @@
 				// 发出事件
 				this.$emit('change', values)
 				// 修改通过v-model绑定的值
-				this.$emit('input', values)
+				this.$emit('update:modelValue', values)
 			},
 		}
 	}

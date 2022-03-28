@@ -73,7 +73,7 @@
 					activeColor: null,
 					inactiveColor: null,
 					size: 18,
-					value: null,
+					modelValue: null,
 					iconColor: null,
 					placement: 'row',
 					borderBottom: false,
@@ -185,7 +185,7 @@
 					uni.$u.error('u-radio必须搭配u-radio-group组件使用')
 				}
 				// 设置初始化时，是否默认选中的状态
-				this.checked = this.name === this.parentData.value
+				this.checked = this.name === this.parentData.modelValue
 			},
 			updateParentData() {
 				this.getParentData('u-radio-group')

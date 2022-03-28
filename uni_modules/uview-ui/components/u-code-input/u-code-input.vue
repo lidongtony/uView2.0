@@ -73,7 +73,7 @@
 			}
 		},
 		watch: {
-			value: {
+			modelValue: {
 				immediate: true,
 				handler(val) {
 					// 转为字符串，超出部分截掉
@@ -154,7 +154,7 @@
 				// 未达到maxlength之前，发送change事件，达到后发送finish事件
 				this.$emit('change', value)
 				// 修改通过v-model双向绑定的值
-				this.$emit('input', value)
+				this.$emit('update:modelValue', value)
 				// 达到用户指定输入长度时，发出完成事件
 				if (String(value).length >= Number(this.maxlength)) {
 					this.$emit('finish', value)

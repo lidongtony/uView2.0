@@ -12,7 +12,7 @@
 		</view>
 		<view
 		    class="u-switch__node"
-		    :class="[value && 'u-switch__node--on']"
+		    :class="[modelValue && 'u-switch__node--on']"
 		    :style="[nodeStyle]"
 		    ref="u-switch__node"
 		>
@@ -20,7 +20,7 @@
 			    :show="loading"
 			    mode="circle"
 			    timingFunction='linear'
-			    :color="value ? activeColor : '#AAABAD'"
+			    :color="modelValue ? activeColor : '#AAABAD'"
 			    :size="size * 0.6"
 			/>
 		</view>
@@ -52,7 +52,7 @@
 		name: "u-switch",
 		mixins: [uni.$u.mpMixin, uni.$u.mixin,props],
 		watch: {
-			value: {
+			modelValue: {
 				immediate: true,
 				handler(n) {
 					if(n !== this.inactiveValue && n !== this.activeValue) {
@@ -78,7 +78,7 @@
 				if(this.customInactiveColor) {
 					style.borderColor = 'rgba(0, 0, 0, 0)'
 				}
-				style.backgroundColor = this.value === this.activeValue ? this.activeColor : this.inactiveColor
+				style.backgroundColor = this.modelValue === this.activeValue ? this.activeColor : this.inactiveColor
 				return style;
 			},
 			nodeStyle() {
@@ -86,7 +86,7 @@
 				// 如果自定义非激活颜色，将node圆点的尺寸减少两个像素，让其与外边框距离更大一点
 				style.width = uni.$u.addUnit(this.size - this.space)
 				style.height = uni.$u.addUnit(this.size - this.space)
-				style.transform = `translateX(${this.value === this.activeValue ? -this.space : -this.size}px)`
+				style.transform = `translateX(${this.modelValue === this.activeValue ? -this.space : -this.size}px)`
 				return style
 			},
 			bgStyle() {
@@ -96,7 +96,7 @@
 				style.height = uni.$u.addUnit(this.size)
 				style.backgroundColor = this.inactiveColor
 				// 打开时，让此元素收缩，否则反之
-				style.transform = `scale(${this.value === this.activeValue ? 0 : 1})`
+				style.transform = `scale(${this.modelValue === this.activeValue ? 0 : 1})`
 				return style
 			},
 			customInactiveColor() {
@@ -107,9 +107,9 @@
 		methods: {
 			clickHandler() {
 				if (!this.disabled && !this.loading) {
-					const oldValue = this.value === this.activeValue ? this.inactiveValue : this.activeValue
+					const oldValue = this.modelValue === this.activeValue ? this.inactiveValue : this.activeValue
 					if(!this.asyncChange) {
-						this.$emit('input', oldValue)
+						this.$emit('update:modelValue', oldValue)
 					}
 					// 放到下一个生命周期，因为双向绑定的value修改父组件状态需要时间，且是异步的
 					this.$nextTick(() => {

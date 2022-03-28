@@ -1,6 +1,6 @@
 <template>
 	<uvTextarea
-		:value="value"
+		:value="modelValue"
 		:placeholder="placeholder"
 		:height="height"
 		:confirmType="confirmType"
@@ -25,7 +25,7 @@
 		@blur="e => $emit('blur')"
 		@linechange="e => $emit('linechange', e)"
 		@confirm="e => $emit('confirm')"
-		@input="e => $emit('input', e)"
+		@input="e => $emit('update:modelValue', e)"
 		@keyboardheightchange="e => $emit('keyboardheightchange')"
 	></uvTextarea>
 </template>
@@ -36,7 +36,7 @@
 	 * 所以在nvue下，取名为u--textarea，内部其实还是u-textarea.vue，只不过做一层中转
 	 */
 	import uvTextarea from '../u-textarea/u-textarea.vue';
-	import props from '../u-textarea/props.js'
+	import props from './props.js'
 	export default {
 		name: 'u--textarea',
 		mixins: [uni.$u.mpMixin, props, uni.$u.mixin],

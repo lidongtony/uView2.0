@@ -125,9 +125,9 @@
 				this.check()
 			},
 			// 监听v-mode的变化，重新初始化内部的值
-			value(n) {
+			modelValue(n) {
 				if (n !== this.currentValue) {
-					this.currentValue = this.format(this.value)
+					this.currentValue = this.format(this.modelValue)
 				}
 			}
 		},
@@ -189,7 +189,7 @@
 		},
 		methods: {
 			init() {
-				this.currentValue = this.format(this.value)
+				this.currentValue = this.format(this.modelValue)
 			},
 			// 格式化整理数据，限制范围
 			format(value) {
@@ -278,7 +278,7 @@
 				// 如果开启了异步变更值，则不修改内部的值，需要用户手动在外部通过v-model变更
 				if (!this.asyncChange) {
 					this.$nextTick(() => {
-						this.$emit('input', value)
+						this.$emit('update:modelValue', value)
 						this.currentValue = value
 						this.$forceUpdate()
 					})

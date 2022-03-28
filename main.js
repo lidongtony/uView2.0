@@ -1,5 +1,5 @@
 import App from './App';
-import {install} from '@/uni_modules/uview-ui';
+// import {install} from '@/uni_modules/uview-ui';
 import {
 	createSSRApp,
 } from 'vue';

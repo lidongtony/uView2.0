@@ -93,7 +93,7 @@
 		},
 		methods: {
 			init() {
-				this.innerValue = this.correctValue(this.value)
+				this.innerValue = this.correctValue(this.modelValue)
 				this.updateColumnValue(this.innerValue)
 			},
 			// 在微信小程序中，不支持将函数当做props参数，故只能通过ref形式调用
@@ -116,7 +116,7 @@
 					value: this.innerValue,
 					mode: this.mode
 				})
-				this.$emit('input', this.innerValue)
+				this.$emit('update:modelValue', this.innerValue)
 			},
 			//用正则截取输出值,当出现多组数字时,抛出错误
 			intercept(e,type){

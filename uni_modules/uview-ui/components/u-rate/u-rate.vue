@@ -108,14 +108,14 @@
 				elId: uni.$u.guid(),
 				elClass: uni.$u.guid(),
 				rateBoxLeft: 0, // 评分盒子左边到屏幕左边的距离，用于滑动选择时计算距离
-				activeIndex: this.value,
+				activeIndex: this.modelValue,
 				rateWidth: 0, // 每个星星的宽度
 				// 标识是否正在滑动，由于iOS事件上touch比click先触发，导致快速滑动结束后，接着触发click，导致事件混乱而出错
 				moving: false,
 			};
 		},
 		watch: {
-			value(val) {
+			modelValue(val) {
 				this.activeIndex = val;
 			},
 			activeIndex: 'emitEvent'
@@ -202,7 +202,7 @@
 				// 发出change事件
 				this.$emit("change", this.activeIndex);
 				// 同时修改双向绑定的value的值
-				this.$emit("input", this.activeIndex);
+				this.$emit("upadte:modelValue", this.activeIndex);
 			},
 			// 获取当前激活的评分图标
 			getActiveIndex(x,isClick = false) {

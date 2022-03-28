@@ -1,6 +1,6 @@
 <template>
 	<uvInput 
-		:value="value"
+		:value="modelValue"
 		:type="type"
 		:fixed="fixed"
 		:disabled="disabled"
@@ -39,7 +39,7 @@
 		@blur="$emit('blur')"
 		@keyboardheightchange="$emit('keyboardheightchange')"
 		@change="e => $emit('change', e)"
-		@input="e => $emit('input', e)"
+		@input="e => $emit('update:modelValue', e)"
 		@confirm="e => $emit('confirm', e)"
 		@clear="$emit('clear')"
 		@click="$emit('click')"
@@ -61,7 +61,7 @@
 	 * 所以在nvue下，取名为u--input，内部其实还是u-input.vue，只不过做一层中转
 	 */
 	import uvInput from '../u-input/u-input.vue';
-	import props from '../u-input/props.js'
+	import props from './props.js'
 	export default {
 		name: 'u--input',
 		mixins: [uni.$u.mpMixin, props, uni.$u.mixin],

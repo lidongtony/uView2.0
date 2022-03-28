@@ -2,7 +2,7 @@ import $u from '@/uni_modules/uview-ui';
 export default {
 	props: {
 		// 输入的值
-		value: {
+		modelValue: {
 			type: [String, Number],
 			default: $u.props.input.value
 		},
@@ -180,4 +180,4 @@ export default {
 			default: $u.props.input.formatter
 		}
 	}
-}
+};

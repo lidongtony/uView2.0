@@ -13,6 +13,7 @@
 </template>
 
 <script>
+	import $u from '@/uni_modules/uview-ui';
 	import props from './props.js';
 	/**
 	 * cellGroup  单元格

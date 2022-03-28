@@ -2,7 +2,7 @@ import $u from '@/uni_modules/uview-ui';
 export default {
 	props: {
 		// 输入框的内容
-		value: {
+		modelValue: {
 			type: [String, Number],
 			default: $u.props.textarea.value
 		},
