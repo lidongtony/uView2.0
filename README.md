@@ -98,5 +98,5 @@ uView遵循[MIT](https://en.wikipedia.org/wiki/MIT_License)开源协议，意味
 ##debug:
 1. 显示props 是因为uview的uni.$u还没有挂载 需要手动挂载;
 2. 显示true 是因为插槽不能用#号
-3. 显示Unexpected token . 正在排查
+3. 显示Unexpected token .\{正在排查
 4.

@@ -7,7 +7,65 @@
 	// 		"query": "" //启动参数，在页面的onLoad函数里面得到
 	// 	}]
 	// },
+	"easycom": {
+		"autoscan": true,
+		"custom": {
+			"^s-(.*)": "@/uni_modules/components/s-$1/s-$1.vue"
+		}
+	},
 	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+		{
+			"path": "pages/index/index",
+			"aliasPath": "/",
+			"style": {
+				"navigationBarTitleText": "首页"
+			},
+			"meta": {
+				"auth": false,
+				"sync": true,
+				"title": "首页",
+				"group": "商城"
+			}
+		},
+		{
+			"path": "pages/index/user",
+			"aliasPath": "/",
+			"style": {
+				"navigationBarTitleText": "用户中心"
+			},
+			"meta": {
+				"auth": false,
+				"sync": true,
+				"title": "用户中心",
+				"group": "用户"
+			}
+		},
+		{
+			"path": "pages/index/category",
+			"aliasPath": "/",
+			"style": {
+				"navigationBarTitleText": "商品分类"
+			},
+			"meta": {
+				"auth": false,
+				"sync": true,
+				"title": "分类",
+				"group": "商城"
+			}
+		},
+		{
+			"path": "pages/index/cart",
+			"aliasPath": "/",
+			"style": {
+				"navigationBarTitleText": "购物车"
+			},
+			"meta": {
+				"auth": false,
+				"sync": true,
+				"title": "购物车",
+				"group": "商城"
+			}
+		},
 		{
 			"path": "pages/example/components",
 			"style": {
@@ -423,8 +481,24 @@
 	},
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
-		"navigationBarTitleText": "uView",
+		"navigationBarTitleText": "星品商城",
 		"navigationBarBackgroundColor": "#FFFFFF",
-		"backgroundColor": "#FFFFFF"
+		"backgroundColor": "#FFFFFF",
+		"navigationStyle": "custom"
+	},
+	"tabBar": {
+		"list": [{
+				"pagePath": "pages/index/index"
+			},
+			{
+				"pagePath": "pages/index/category"
+			},
+			{
+				"pagePath": "pages/index/cart"
+			},
+			{
+				"pagePath": "pages/index/user"
+			}
+		]
 	}
 }

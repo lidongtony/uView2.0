@@ -1,0 +1,11 @@
+<template>
+	<s-template title="购物车" tabbar="/pages/index/cart" navbar></s-template>
+</template>
+
+<script setup>
+
+</script>
+
+<style>
+
+</style>

@@ -1,0 +1,27 @@
+<template>
+	<s-template title="我的" tabbar="/pages/index/user" :customStyle="customStyle">
+		<s-container v-for="(item, index) in containerList"
+	 	  :key="index"
+		  :type="item.type" 
+	 	  :style="item.style"
+		  :data="item.data" />
+	</s-template>
+
+</template>
+
+<script setup>
+	import {
+		computed
+	} from 'vue';
+	import sheep from '@/sheep';
+	const customStyle = computed(() => {
+		return sheep.$store.getters.userTemplate.style;
+	})
+	const containerList = computed(() => {
+		return sheep.$store.getters.userTemplate.data;
+	});
+</script>
+
+<style>
+
+</style>

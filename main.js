@@ -1,12 +1,15 @@
 import App from './App';
-// import {install} from '@/uni_modules/uview-ui';
+import $u from '@/uni_modules/uview-ui';
 import {
 	createSSRApp,
 } from 'vue';
+import {
+	setupSheep,
+} from '@/sheep';
 
 export const createApp = () => {
 	const app = createSSRApp(App);
-	// setupSheep(app);
+	setupSheep(app);
 	return {
 		app
 	};
